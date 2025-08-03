@@ -7,34 +7,32 @@
 
 import SwiftUI
 
+// fixed
+// flexible
+// adaptive
+
 struct ContentView: View {
+    
+    let columns = [
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+        GridItem(.fixed(100)),
+    ]
+    
     var body: some View {
         VStack {
-            Grid(alignment: .trailing ,horizontalSpacing: 2, verticalSpacing: 5)
-            {
-                GridRow{
+            LazyVGrid(columns: columns) {
+                ForEach(0...50, id: \.self) { index in
                     Color.red
-                        .frame(width: 50 ,height: 50)
-                    Color.yellow
                         .frame(height: 50)
-                }
-                
-                GridRow{
-                    Color.red
-                    Color.yellow
-                    Color.green
-                }
-                
-                GridRow(alignment: .firstTextBaseline){
-                    Text("1")
-                    Text("2")
-                    Text("3")
                 }
             }
             
-            Divider()
         }
-        .padding(.horizontal)
     }
 }
 
